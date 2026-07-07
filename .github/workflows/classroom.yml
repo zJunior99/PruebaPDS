@@ -1,0 +1,30 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: T1
+      id: t1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: T1
+        setup-command: export HOME='/home/runner' && cd Bitacora && dotnet restore
+        command: export HOME='/home/runner' && cd Bitacora && dotnet build
+        timeout: 10
+        max-score: 11
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        T1_RESULTS: "${{steps.t1.outputs.result}}"
+      with:
+        runners: t1

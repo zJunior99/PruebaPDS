@@ -5,17 +5,20 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>b8eb0b21-75f8-462a-8127-31f666b583f7</UserSecretsId>
+    <UserSecretsId>8ab3f64c-3bc7-4b6d-aede-57000725e9ec</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bitacora.ApiService\Bitacora.ApiService.csproj" />
-    <ProjectReference Include="..\Bitacora.Web\Bitacora.Web.csproj" />
+    <ProjectReference Include="..\Bitacora.ApiService\Bitacora.ApiService.csproj">
+      <IsAspireProjectResource>true</IsAspireProjectResource>
+    </ProjectReference>
+    <ProjectReference Include="..\Bitacora.Web\Bitacora.Web.csproj">
+      <IsAspireProjectResource>true</IsAspireProjectResource>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.1.0" />
     <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="8.2.2" />
   </ItemGroup>
 

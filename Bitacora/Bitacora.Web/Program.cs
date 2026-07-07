@@ -1,6 +1,6 @@
 using Bitacora.Web;
 using Bitacora.Web.Components;
-using MassTransit; //al inicio
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +20,6 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         client.BaseAddress = new("https+http://apiservice");
     });
 
-// antes de la linea `var app = builder.Build();`
 builder.Services.AddMassTransit(x =>
 {
     x.SetKebabCaseEndpointNameFormatter();

@@ -1,13 +1,13 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var messaging = builder.AddRabbitMQ("RabbitMQConnection"); //Define el servicio de colas
+var messaging = builder.AddRabbitMQ("RabbitMQConnection");
 
 var apiService = builder.AddProject<Projects.Bitacora_ApiService>("apiservice")
-    .WithReference(messaging); // Inyecta el servicio en la capa api
+    .WithReference(messaging);
 
 builder.AddProject<Projects.Bitacora_Web>("webfrontend")
     .WithExternalHttpEndpoints()
     .WithReference(apiService)
-    .WithReference(messaging); // Inyecta el servicio en la capa web
+    .WithReference(messaging);
 
 builder.Build().Run();

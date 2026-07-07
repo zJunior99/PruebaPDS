@@ -1,5 +1,5 @@
-using Bitacora.ApiService; //al inicio
-using MassTransit; //al inicio
+using Bitacora.ApiService;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,6 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
-// antes de la linea `var app = builder.Build();`
 builder.Services.AddMassTransit(x =>
 {
     x.SetKebabCaseEndpointNameFormatter();
